@@ -34,6 +34,8 @@ let cardsArray = [
         }
     ];
 
+const parentDiv = document.querySelector('#card-sec');
+
  // 🔴 Step - 2. Duplicating the cards
 const gameArray = cardsArray.concat(cardsArray);
  console.log(gameArray)
@@ -56,21 +58,92 @@ const gameArray = cardsArray.concat(cardsArray);
 
 let shuffledCards = Array.from(gameArray).sort(()=> 0.5 - Math.random());
 
+//🔴 Step -5. Allow only 2 cards to select at a time
+
+let clickCount =0;
+let firstCard = "";
+let secondCard = "";
+
+const card_matches = () => {
+    let card_selected = document.querySelectorAll('.card_selected')
+    
+    card_selected.forEach((cardElem)=>{
+        cardElem.classList.add('card_match')
+    })
+}
+
+
+
+// 🔴 Step - 7. Continue playing till match ends.
+
+const continueGame =()=>{
+     clickCount =0;
+     firstCard = "";
+     secondCard = "";
+
+     let card_selected = ()=> document.querySelectorAll('.card_selected')
+            card_selected.forEach((cardElem)=>{
+                cardElem.classList.remove('card_selected')
+     })
+}
 
 //🔴 Step - 4. Selected card appearance 
+
+parentDiv.addEventListener('click', (event)=>{
+    let currtCard = event.target;
+
+    // Matching card
+
+
+    if(currtCard.id === "card-sec"){return false}
+    clickCount ++;
+    if (clickCount < 3){
+       if(clickCount === 1){
+           firstCard = currtCard.dataset.name;
+          currtCard.classList.add('card_selected');
+       }else{
+        secondCard = currtCard.dataset.name;
+        currtCard.classList.add('card_selected')
+       }
+      if(firstCard!== "" && secondCard !== ""){
+        if(firstCard === secondCard){
+            // currtCard.classList.add('card_match')  
+            card_matches()
+            continueGame()
+        }else{
+            continueGame()
+        }
+      }
+    }
+    
+
+
+    // currtCard.classList.add('card_selected')
+})
 
 
 
 
 // 🔴 Step - 1. 
-const parentDiv = document.querySelector('#card-sec');
+
 
 for (let i=0; i<shuffledCards.length; i++){
     const childDiv = document.createElement('div')
-     childDiv.classList.add('card')
+    childDiv.classList.add('card')
     childDiv.dataset.name = shuffledCards[i].name;
     childDiv.style.backgroundImage = `url(${shuffledCards[i].img})`;
     parentDiv.appendChild(childDiv)
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
