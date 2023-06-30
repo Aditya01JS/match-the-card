@@ -37,7 +37,7 @@ span{
     grid-gap: 2rem;
 }
 
-.card{
+/* .card{
     display: flex;
     width: 10rem;
     height:10rem;
@@ -53,4 +53,49 @@ span{
 
 .card_match{
     border: 2rem solid purple;
+} */
+
+
+.card{
+    position: relative;
+    transition:all .4s linear;
+    transform-style: preserve-3d;
+}
+
+.card,
+.back-card,
+.front-card{
+    height: 10rem;
+    width: 10rem;
+}
+
+.back-card,
+.front-card {
+    position:absolute;
+    backface-visibility: hidden ;
+}
+
+
+.front-card{
+    background: var(--border-color);
+    background-size: contain;
+    border-radius: .6rem;
+    box-shadow: -1px -2px 8px 0px;
+    padding: 2rem;
+}
+
+.back-card{
+    transform: rotateY('180deg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: .6rem;
+    box-shadow: -1px -2px 8px 0px;
+    padding: 2rem;
+}
+
+.card_selected{
+    transform: rotateY('180deg');
+}
+.card_match .front-card{
+    background-color: var(--bg-card);
 }

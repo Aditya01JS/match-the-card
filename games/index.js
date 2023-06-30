@@ -65,7 +65,7 @@ let firstCard = "";
 let secondCard = "";
 
 const card_matches = () => {
-    let card_selected = document.querySelectorAll('.card_selected')
+    let card_selected = document.querySelectorAll('.card_selected');
     
     card_selected.forEach((cardElem)=>{
         cardElem.classList.add('card_match')
@@ -81,9 +81,9 @@ const continueGame =()=>{
      firstCard = "";
      secondCard = "";
 
-     let card_selected = ()=> document.querySelectorAll('.card_selected')
-            card_selected.forEach((cardElem)=>{
-                cardElem.classList.remove('card_selected')
+    let card_selected = document.querySelectorAll('.card_selected');
+     card_selected.forEach((cardElems)=>{
+            cardElems.classList.remove('card_selected')
      })
 }
 
@@ -108,10 +108,15 @@ parentDiv.addEventListener('click', (event)=>{
       if(firstCard!== "" && secondCard !== ""){
         if(firstCard === secondCard){
             // currtCard.classList.add('card_match')  
-            card_matches()
-            continueGame()
+            setTimeout(()=>{
+                card_matches()
+                continueGame()
+            },500)
+            
         }else{
-            continueGame()
+            setTimeout(()=>{
+                continueGame()
+            },500)
         }
       }
     }
@@ -131,18 +136,21 @@ for (let i=0; i<shuffledCards.length; i++){
     const childDiv = document.createElement('div')
     childDiv.classList.add('card')
     childDiv.dataset.name = shuffledCards[i].name;
-    childDiv.style.backgroundImage = `url(${shuffledCards[i].img})`;
+    // childDiv.style.backgroundImage = `url(${shuffledCards[i].img})`;
+    
+    const frontSide = document.createElement('div')
+    frontSide.classList.add('front-card')
+    
+    const backSide = document.createElement('div')
+    backSide.classList.add('back-card')
+    backSide.style.backgroundImage = `url(${shuffledCards[i].img})`;
     parentDiv.appendChild(childDiv)
+
+    childDiv.appendChild(frontSide)
+    childDiv.appendChild(backSide)
+
+  
 }
-
-
-
-
-
-
-
-
-
 
 
 
