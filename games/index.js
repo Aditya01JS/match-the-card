@@ -53,7 +53,7 @@ const gameArray = cardsArray.concat(cardsArray);
    
 // }
 // return array
-// }
+// } 
 // const shuffledCards = shuffleAlgo(gameArray)
 
 let shuffledCards = Array.from(gameArray).sort(()=> 0.5 - Math.random());
@@ -64,7 +64,7 @@ let clickCount =0;
 let firstCard = "";
 let secondCard = "";
 
-const card_matches = () => {
+const card_match = () => {
     let card_selected = document.querySelectorAll('.card_selected');
     
     card_selected.forEach((cardElem)=>{
@@ -99,17 +99,17 @@ parentDiv.addEventListener('click', (event)=>{
     clickCount ++;
     if (clickCount < 3){
        if(clickCount === 1){
-           firstCard = currtCard.dataset.name;
-          currtCard.classList.add('card_selected');
+           firstCard = currtCard.parentNode.dataset.name;
+          currtCard.parentNode.classList.add('card_selected');
        }else{
-        secondCard = currtCard.dataset.name;
-        currtCard.classList.add('card_selected')
+        secondCard = currtCard.parentNode.dataset.name;
+        currtCard.parentNode.classList.add('card_selected')
        }
       if(firstCard!== "" && secondCard !== ""){
         if(firstCard === secondCard){
             // currtCard.classList.add('card_match')  
             setTimeout(()=>{
-                card_matches()
+                card_match()
                 continueGame()
             },500)
             
@@ -139,10 +139,10 @@ for (let i=0; i<shuffledCards.length; i++){
     // childDiv.style.backgroundImage = `url(${shuffledCards[i].img})`;
     
     const frontSide = document.createElement('div')
-    frontSide.classList.add('front-card')
+    frontSide.classList.add('front_card')
     
     const backSide = document.createElement('div')
-    backSide.classList.add('back-card')
+    backSide.classList.add('back_card')
     backSide.style.backgroundImage = `url(${shuffledCards[i].img})`;
     parentDiv.appendChild(childDiv)
 

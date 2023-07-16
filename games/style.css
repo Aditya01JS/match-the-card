@@ -17,7 +17,6 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 5rem;
     height: 100vh;
     background-color: var(--bg-main);
 }
@@ -37,7 +36,7 @@ span{
     grid-gap: 2rem;
 }
 
-/* .card{
+.card{
     display: flex;
     width: 10rem;
     height:10rem;
@@ -47,45 +46,54 @@ span{
    
 }
 
-.card_selected{
-    border: 2rem solid var(--border-color);
-}
+/* .card_selected{
+    border: .2rem solid var(--border-color);
+} */
 
-.card_match{
+/* .card_match{
     border: 2rem solid purple;
 } */
 
 
-.card{
+/* .card{
     position: relative;
     transition:all .4s linear;
     transform-style: preserve-3d;
-}
+} */
 
-.card,
-.back-card,
-.front-card{
+/* //will see this later */
+/* .back_card{
     height: 10rem;
     width: 10rem;
 }
 
-.back-card,
-.front-card {
+.card .front_card{
+    height: 10rem;
+    width: 10rem;
+}
+
+.front_card{
+    position:absolute;
+    backface-visibility: hidden ;
+}
+
+.back_card {
     position:absolute;
     backface-visibility: hidden ;
 }
 
 
-.front-card{
+.front_card{
+  
     background: var(--border-color);
-    background-size: contain;
+    background-size: contain; 
     border-radius: .6rem;
     box-shadow: -1px -2px 8px 0px;
     padding: 2rem;
-}
+} 
 
-.back-card{
-    transform: rotateY('180deg');
+.back_card{
+    transform: rotateY(180deg);
     background-repeat: no-repeat;
     background-size: contain;
     border-radius: .6rem;
@@ -94,8 +102,56 @@ span{
 }
 
 .card_selected{
-    transform: rotateY('180deg');
+    transform: rotateY(180deg);    
 }
-.card_match .front-card{
-    background-color: var(--bg-card);
+
+.card_match {
+    background-color: red;
+    
+} */
+
+.card {
+    position:relative;
+    transition: all .4s linear;
+    transform-style: preserve-3d;
+}
+
+.card,
+.back_card,
+.front_card{
+    height: 10rem;
+    width: 10rem;
+}
+
+.back_card,
+.front_card{
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front_card{
+    background: var(--border-color);
+    background-size: contain;
+    border-radius: .6rem;
+    box-shadow: rgb(223, 156, 85) 0px 8px 24px;
+    padding: 2rem;
+}
+
+.back_card{
+    transform: rotateY(180deg);
+      /*background-repeat: no-repeat; */
+    background-size: contain;
+    background-position: center center;
+    border-radius: .6rem;
+    box-shadow: rgb(255, 153, 0) -1px -2px 8px 0px;
+    padding: 2rem;
+}
+
+.card_selected {
+    transform: rotateY(180deg);   
+}
+
+
+.card_match .front_card{
+    background-color: green;
 }
