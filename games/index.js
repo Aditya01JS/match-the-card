@@ -155,3 +155,11 @@ for (let i=0; i<shuffledCards.length; i++){
 
 
 
+var restartButton = document.getElementById("restartButton");
+
+// Add a click event listener to the button
+restartButton.addEventListener("click", function() {
+  // Perform the restart action here
+  window.location.href = window.location.href;
+});
+
