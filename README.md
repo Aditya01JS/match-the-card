@@ -1,6 +1,6 @@
 # match-the-card
 # Live Demo 
-   https://match-the-card.adityajanardan.repl.co
+   (https://match-the-card.adityajanardan.repl.co)[Match_The_Card]
 
 # Info
    - It's a BrainStorming Game created by Vanilla JavaScript, HTML and CSS.
